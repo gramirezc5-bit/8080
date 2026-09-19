@@ -186,6 +186,71 @@ document.getElementById('btn-mem-go').addEventListener('click', () => {
     memoryStart = parseInt(val, 16) || 0;
     renderMemory();
 });
+// ======================================================
+// Floating Point Coprocessor (FPU) - Interface
+// ======================================================
+
+// Obtiene los valores ingresados en F0 y F1
+function loadFPURegisters() {
+    const f0 = parseFloat(document.getElementById('fpu-f0').value);
+    const f1 = parseFloat(document.getElementById('fpu-f1').value);
+
+    fpu.load('F0', f0);
+    fpu.load('F1', f1);
+}
+
+// Muestra el resultado de una operacion
+function showFPUResult(result) {
+    document.getElementById('fpu-result').textContent = result;
+    document.getElementById('fpu-status').textContent =
+        'Operacion realizada correctamente';
+}
+
+// Maneja errores de la FPU
+function showFPUError(error) {
+    document.getElementById('fpu-result').textContent = 'Error';
+    document.getElementById('fpu-status').textContent = error.message;
+}
+
+// FADD - Suma
+document.getElementById('fpu-add').addEventListener('click', () => {
+    try {
+        loadFPURegisters();
+        showFPUResult(fpu.add());
+    } catch (error) {
+        showFPUError(error);
+    }
+});
+
+// FSUB - Resta
+document.getElementById('fpu-sub').addEventListener('click', () => {
+    try {
+        loadFPURegisters();
+        showFPUResult(fpu.sub());
+    } catch (error) {
+        showFPUError(error);
+    }
+});
+
+// FMUL - Multiplicacion
+document.getElementById('fpu-mul').addEventListener('click', () => {
+    try {
+        loadFPURegisters();
+        showFPUResult(fpu.mul());
+    } catch (error) {
+        showFPUError(error);
+    }
+});
+
+// FDIV - Division
+document.getElementById('fpu-div').addEventListener('click', () => {
+    try {
+        loadFPURegisters();
+        showFPUResult(fpu.div());
+    } catch (error) {
+        showFPUError(error);
+    }
+});
 
 // Initial UI update
 updateUI();
