@@ -94,6 +94,36 @@ HLT"></textarea>
                 </div>
             </div>
         </section>
+        <!-- Coprocesador de Punto Flotante -->
+<section class="card fpu-card">
+  <h3>Floating Point Coprocessor (FPU)</h3>
+
+  <div class="fpu-controls">
+    <label>
+      F0:
+      <input type="number" id="fpu-f0" value="5.5" step="any">
+    </label>
+
+    <label>
+      F1:
+      <input type="number" id="fpu-f1" value="2.5" step="any">
+    </label>
+
+    <div class="fpu-buttons">
+      <button id="fpu-add">FADD</button>
+      <button id="fpu-sub">FSUB</button>
+      <button id="fpu-mul">FMUL</button>
+      <button id="fpu-div">FDIV</button>
+    </div>
+
+    <p>
+      Resultado:
+      <strong id="fpu-result">0</strong>
+    </p>
+
+    <p id="fpu-status">FPU lista</p>
+  </div>
+</section>
     </main>
 
     <script src="cpu.js"></script>
